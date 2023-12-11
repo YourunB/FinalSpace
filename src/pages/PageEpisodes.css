@@ -1,0 +1,6 @@
+.PageEpisodes {}
+
+.PageEpisodes__content {
+  min-height: calc(100vh - 162px);
+  height: 100%;
+}

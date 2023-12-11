@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: white;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+#root {
+  max-width: 1400px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
