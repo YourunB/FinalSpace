@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState={
-  page: 1,
   maxPage: 0,
   episodesArr: null,
 }
@@ -12,8 +11,8 @@ export const dataSlice = createSlice({
   reducers: {
 
     updateSaveEpisodes: (state, action) => {
-      state.episodesArr = action.payload;
-/*
+      //state.episodesArr = action.payload;
+
       let array = action.payload;
       let size = 8;
       let subarray = [];
@@ -21,7 +20,7 @@ export const dataSlice = createSlice({
       state.episodesArr = subarray;
 
 
-      state.maxPage = Math.ceil(action.payload.length / 8);*/
+      state.maxPage = Math.ceil(action.payload.length / 8);
     },
 
   },

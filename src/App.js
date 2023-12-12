@@ -11,10 +11,10 @@ export const App = () => (
   <BrowserRouter>
     <Provider store={store}>
 
-      <header>
+      <div>
         <PagesLinks />
         <PagesRouter />
-      </header>
+      </div>
       
     </Provider>
   </BrowserRouter>
