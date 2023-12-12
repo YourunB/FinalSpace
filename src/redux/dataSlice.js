@@ -12,8 +12,8 @@ export const dataSlice = createSlice({
   reducers: {
 
     updateSaveEpisodes: (state, action) => {
-      //state.episodesArr = action.payload;
-
+      state.episodesArr = action.payload;
+/*
       let array = action.payload;
       let size = 8;
       let subarray = [];
@@ -21,7 +21,7 @@ export const dataSlice = createSlice({
       state.episodesArr = subarray;
 
 
-      state.maxPage = Math.ceil(action.payload.length / 8);
+      state.maxPage = Math.ceil(action.payload.length / 8);*/
     },
 
   },

@@ -1,13 +1,10 @@
-﻿import { func } from 'prop-types';
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 
 import './Episode.css';
 
-import {appEvents} from '';
+import {appEvents} from './events';
 
 const Episode = props => {
-
-  const [editing, setEditing] = useState(false);
 
   console.log(props.episode);
 
