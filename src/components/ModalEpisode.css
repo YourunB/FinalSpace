@@ -7,14 +7,15 @@
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
   position: fixed;
   z-index: 100;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   border-radius: 10px;
   opacity: 0;
   animation: show 0.5s forwards;
   overflow: auto;
-  cursor: pointer;
   transition: 1s;
 }
 
@@ -29,6 +30,7 @@
   opacity: 0;
   background: black;
   animation: ModalEpisode-show-overlay 0.5s forwards;
+  overflow: hidden;
 }
 
 .ModalEpisode__window h3 {
@@ -66,6 +68,59 @@
   animation: ModalEpisode-hide 0.5s;
 }
 
+.ModalEpisode__window_controls {
+  display: flex;
+  justify-content: center;
+}
+
+.ModalEpisode button {
+  font-weight: 700;
+  padding: 10px;
+  transition: 1s;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: iridescent 5s ease-in-out infinite alternate;
+  outline:none;
+  border: solid 1px #0190cd;
+  border-radius: 5px;
+}
+
+.ModalEpisode__window_characters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ModalEpisode__window_btn-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: black;
+  width: 40px;
+  height: 40px;
+}
+
+@media (hover:hover) {
+  .ModalEpisode button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  .ModalEpisode button:active {
+    transform: scale(0.9);
+    transition: 0.2s;
+  }
+}
+
+@keyframes ModalEpisode-iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
 @keyframes ModalEpisode-attenuation  {
   0% {transform: scale(1);}
   100% {transform: scale(1.05);}
@@ -98,11 +153,7 @@
 
 @media (hover:hover) {
   .ModalEpisode__window:hover {
-    background: rgba(47, 13, 169, 0.5);
-  }
-
-  .ModalEpisode__window:active {
-    transition: 0.2s;
-    scale: 0.95;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
   }
 }

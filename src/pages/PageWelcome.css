@@ -20,9 +20,10 @@
 .PageWelcome p {
   text-align: center;
   transform: translateX(-200%);
-  animation: slide 1s forwards;
+  opacity: 0;
   animation-delay: 1s;
   font-size: 14px;
+  animation: slide 1s forwards;
 }
 
 .PageWelcome p span{
@@ -36,8 +37,14 @@
 }
 
 @keyframes slide {
-  0% {  transform: translateX(-200%);}
-  100% {  transform: translateX(0);}
+  0% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes show-scale {

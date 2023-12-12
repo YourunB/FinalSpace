@@ -1,0 +1,8 @@
+.PageCharacters {}
+
+.PageCharacters__characters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}

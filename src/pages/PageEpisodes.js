@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import "regenerator-runtime/runtime";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateSaveEpisodes } from "../redux/dataSlice.js";
@@ -19,12 +19,10 @@ export const PageEpisodes = () => {
   const dataRedux = useSelector( state => state.data ); 
 
   useEffect( () => {
-    //appEvents.addListener('EventGetEpisodes', saveEpisodes);
     appEvents.addListener('EventCheckEpisode', checkEpisode);
     appEvents.addListener('EventCloseModalEpisode', closeModalEpisode);
 
     return() => {
-      //appEvents.removeListener('EventGetEpisodes', saveEpisodes);
       appEvents.removeListener('EventCheckEpisode', checkEpisode);
       appEvents.removeListener('EventCloseModalEpisode', closeModalEpisode);
     }
@@ -34,7 +32,7 @@ export const PageEpisodes = () => {
   function checkEpisode(episode) { setCheckedEpisode(episode); }
   function closeModalEpisode() { setCheckedEpisode(null); }
 
-  function getData(link, what) {
+  function getData(link) {
     let url = link;
     const options = {
       method: 'GET',
@@ -44,14 +42,14 @@ export const PageEpisodes = () => {
       try {
         const response = await fetch(url, options);
         const data = await response.json();
-        if (what === 'episodes') saveEpisodes(data);
+        saveEpisodes(data);
       } catch (error) {
-        if (error != "") console.log("Error: " + error);
+        if (error !== "") console.log("Error: " + error);
       }
     }
   }
 
-  if (dataRedux.episodesArr === null) getData('https://finalspaceapi.com/api/v0/episode', 'episodes'); //get episodes
+  if (dataRedux.episodesArr === null) getData('https://finalspaceapi.com/api/v0/episode'); //get episodes
 
   function prevPage() { if (page > 1) setPage(page - 1); }
   function nextPage() { if (page < dataRedux.maxPage) setPage(page + 1);  }
@@ -71,9 +69,9 @@ export const PageEpisodes = () => {
   },[window.location.search])
   
 
-  let episodesCode;
+  let episodeCode;
   if (dataRedux.episodesArr !== null) {
-    episodesCode = dataRedux.episodesArr[page - 1].map( el => {
+    episodeCode = dataRedux.episodesArr[page - 1].map( el => {
       let episode = el;
       return <Episode
         episode={episode}
@@ -88,7 +86,7 @@ export const PageEpisodes = () => {
       <div className='PageEpisodes__content'>
         <h1>Episodes</h1>
         <div className='PageEpisodes__content_episodes'>
-          {episodesCode}
+          {episodeCode}
           <div className='PageEpisodes__content_episodes_controls'>
             <NavLink to={`/episodes?page=${page - 1}`}><button disabled={(page === 1) ? true : false} onClick={() => {prevPage()}}>&#8882;</button></NavLink>
             <NavLink to={`/episodes?page=${page + 1}`}><button disabled={(page === dataRedux.maxPage) ? true : false}  onClick={() => {nextPage()}}>&#8883;</button></NavLink>
