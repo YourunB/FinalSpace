@@ -66,8 +66,11 @@ export const PageEpisodes = () => {
     }
   }
 
-  locationNav();
+  useEffect(() => {
+    locationNav();
+  },[window.location.search])
   
+
   let episodesCode;
   if (dataRedux.episodesArr !== null) {
     episodesCode = dataRedux.episodesArr[page - 1].map( el => {

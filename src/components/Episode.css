@@ -6,6 +6,9 @@
   animation: show 0.5s forwards;
   animation-delay: 0.3s;
   transition: 1s;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .Episode__image {
@@ -15,7 +18,7 @@
   border-radius: 10px;
 }
 
-.Episode__image img{
+.Episode__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -68,5 +71,18 @@
   .Episode button:active {
     transform: scale(0.9);
     transition: 0.2s;
+  }
+
+  .Episode:hover {
+    background: rgba(47, 13, 169, 0.5);
+  }
+
+  .Episode:active {
+    transform: scale(0.9);
+    transition: 0.2s;
+  }
+
+  .Episode:hover .Episode__image img {
+    transform: scale(1.1);
   }
 }

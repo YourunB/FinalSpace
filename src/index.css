@@ -23,6 +23,13 @@ a {
   text-decoration: inherit;
 }
 
+.bcg {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 *::-webkit-scrollbar {
   width: 5px;
   width: 5px;

@@ -16,6 +16,8 @@ export const App = () => (
         <PagesRouter />
       </div>
       
+      <img className='bcg' src='images/bcg.png' alt='Final Space'/>
+      
     </Provider>
   </BrowserRouter>
 );
