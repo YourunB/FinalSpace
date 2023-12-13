@@ -3,9 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateLoginState, updateDbFireBase, updateActiveUser, updateUid } from "../redux/dataSlice.js";
 
-import { initializeApp } from "firebase/app";
-import { getDatabase, child, ref, push, update, set, remove, once, onValue  } from "firebase/database";
-import { firebaseConfig, app } from './firebaseModule';
+import { getDatabase, child, ref, push, update, onValue  } from "firebase/database";
+import { app } from './firebaseModule';
 
 import './PagesLinks.css';
 

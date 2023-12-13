@@ -12,6 +12,11 @@ const Episode = props => {
     appEvents.emit('EventCheckEpisode', props.episode);
   }
 
+  function addToFavorites(e) {
+    appEvents.emit('EventAddToFavorites', props.episode);
+    e.stopPropagation();
+  }
+
   return (
     <div className='Episode' ref={episodeBlock} onClick={()=>{checkEpisode()}}>
       <div className='Episode__image'>
@@ -23,7 +28,7 @@ const Episode = props => {
         <p><span>Director: </span>{props.episode.director}</p>
         <p><span>Writer: </span>{props.episode.writer}</p>
       </div>
-      <button>Add to Favorites</button>
+      <button onClick={(e) => {addToFavorites(e);}}>Add to Favorites</button>
     </div>
   );
 };

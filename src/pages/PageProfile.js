@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateLoginState, updateDbFireBase, updateActiveUser } from "../redux/dataSlice.js";
+import { updateDbFireBase } from "../redux/dataSlice.js";
 
-import { initializeApp } from "firebase/app";
-import { getDatabase, child, ref, push, update, set, remove, once, onValue  } from "firebase/database";
-import { firebaseConfig, app } from '../components/firebaseModule';
+import { getDatabase, child, ref, push, update, onValue  } from "firebase/database";
+import { app } from '../components/firebaseModule';
 
 import './PageProfile.css';
 
@@ -33,22 +32,19 @@ export const PageProfile = () => {
   }
 
   function editUserDb(uid, name, nick, age, mail, pass) {
-    const postData = {
+    update(ref(db, `/users/${uid}`), {
       name: name,
       nick: nick,
       age: age,
       pass: pass,
       mail: mail,
-    };
-  
-    const newPostKey = push(child(ref(db), 'posts')).key;
-  
-    const updates = {};
-    updates[`/users/${uid}`] = postData;
-  
-    const res = update(ref(db), updates);
-    getDb();
-    console.log(dataRedux.db)
+    })
+    .then(() => {
+      getDb();
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    })
   }
 
   function applyEdit() {
@@ -71,7 +67,7 @@ export const PageProfile = () => {
         <div>
           <span>Your name: </span>
           <input ref={refInputName} defaultValue={user[dataRedux.uid].name}></input>
-        </div>
+        </div>  
         <div>
           <span>Your nick: </span>
           <input ref={refInputNick} defaultValue={user[dataRedux.uid].nick}></input>

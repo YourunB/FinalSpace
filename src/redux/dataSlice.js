@@ -23,7 +23,6 @@ export const dataSlice = createSlice({
       state.episodesArr = subarray;
       state.maxPage = Math.ceil(action.payload.length / 8);
     },
-
     
     updateSaveCharacters: (state, action) => {
       state.charactersArr = action.payload;

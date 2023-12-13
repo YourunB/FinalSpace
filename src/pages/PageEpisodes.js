@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "regenerator-runtime/runtime";
 import { useDispatch, useSelector } from 'react-redux';
-import { updateSaveEpisodes } from "../redux/dataSlice.js";
+import { updateSaveEpisodes, updateDbFireBase } from "../redux/dataSlice.js";
 import { NavLink } from 'react-router-dom';
 
 import {appEvents} from '../components/events.js';
@@ -9,6 +9,9 @@ import './PageEpisodes.css';
 import Footer from '../components/Footer.js';
 import Episode from '../components/Episode.js';
 import ModalEpisode from '../components/ModalEpisode';
+
+import { getDatabase, child, ref, push, update, onValue  } from "firebase/database";
+import { app } from '../components/firebaseModule';
 
 export const PageEpisodes = () => {
 
@@ -18,19 +21,50 @@ export const PageEpisodes = () => {
   const dispatch = useDispatch();
   const dataRedux = useSelector( state => state.data ); 
 
+  const db = getDatabase(app);
+
+  if (dataRedux.db === null) {
+    getDb();
+  }
+
+  function getDb() {
+    onValue(ref(db), (snapshot) => {
+      const data = snapshot.val();
+      dispatch(updateDbFireBase(data));
+    });
+  }
+
   useEffect( () => {
     appEvents.addListener('EventCheckEpisode', checkEpisode);
     appEvents.addListener('EventCloseModalEpisode', closeModalEpisode);
+    appEvents.addListener('EventAddToFavorites', addToFavorites);
 
     return() => {
       appEvents.removeListener('EventCheckEpisode', checkEpisode);
       appEvents.removeListener('EventCloseModalEpisode', closeModalEpisode);
+      appEvents.removeListener('EventAddToFavorites', addToFavorites);
     }
   }, [dataRedux] );
 
   function saveEpisodes(episodesArr) { dispatch(updateSaveEpisodes(episodesArr)); }
   function checkEpisode(episode) { setCheckedEpisode(episode); }
   function closeModalEpisode() { setCheckedEpisode(null); }
+
+  function addToFavorites(episode) {
+    if (dataRedux.uid !== null) {
+      update(ref(db, `/users/${dataRedux.uid}/favorites/`), {
+        [episode.id]: episode,
+      })
+      .then(() => {
+        getDb();
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      })
+      alert('Add to favorites');
+    }
+    else alert('Please login first');
+  }
 
   function getData(link) {
     let url = link;
