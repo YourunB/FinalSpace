@@ -1,0 +1,84 @@
+.PageProfile {}
+
+.PageProfile h3 {
+  text-align: center;
+}
+
+.PageProfile h4 {
+  text-align: center;
+}
+
+.PageProfile__info_box-image {
+  display: flex;
+  justify-content: center;
+}
+
+.PageProfile__info_box-image img {
+  width: 300px;
+  background: rebeccapurple;
+  border-radius: 10px;
+}
+
+.PageProfile__info_change div span {
+  display: block;
+  margin: 10px 0;
+  width: 200px;
+}
+
+.PageProfile__info_change input {
+  outline: none;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;
+  color: rgb(68, 71, 255);
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.PageProfile__info_change input:focus {
+  color: rgb(217, 32, 32);
+}
+
+.PageProfile h3 span  {
+  transition: 1s;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: iridescent 5s ease-in-out infinite alternate;
+}
+
+.PageProfile__info_change_controls {
+  display: flex;
+  justify-content: center;
+}
+
+.PageProfile__info_change_controls button {
+  padding: 10px;
+  font-weight: 700;
+  background: none;
+  color: white;
+  border: solid 2px white;
+  border-radius: 5px;
+  width: 100px;
+  transition: 0.5s;
+}
+
+@media (hover:hover) {
+  .PageProfile__info_change_controls button:hover {
+    transform: scale(1.1);
+  }
+
+  .PageProfile__info_change_controls button:active {
+    transform: scale(0.9);
+    transition: 0.2s;
+  }
+}
+
+@keyframes PageProfile-iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}

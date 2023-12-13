@@ -5,6 +5,9 @@ const initialState={
   episodesArr: null,
   charactersArr: null,
   login: false,
+  db: null,
+  activeUser: null,
+  uid: null,
 }
 
 export const dataSlice = createSlice({
@@ -26,9 +29,24 @@ export const dataSlice = createSlice({
       state.charactersArr = action.payload;
     },
 
+    updateLoginState: (state, action) => {
+      state.login = action.payload;
+    },
+
+    updateDbFireBase: (state, action) => {
+      state.db = action.payload;
+    },
+
+    updateActiveUser: (state, action) => {
+      state.activeUser = action.payload;
+    },
+
+    updateUid: (state, action) => {
+      state.uid = action.payload;
+    },
   },
 });
 
-export const { updateSaveEpisodes, updateSaveCharacters } = dataSlice.actions;
+export const { updateSaveEpisodes, updateSaveCharacters, updateLoginState, updateDbFireBase, updateActiveUser, updateUid } = dataSlice.actions;
 
 export default dataSlice.reducer;
