@@ -5,7 +5,7 @@ export const PageFavorites = () => {
     return (
       <div>
         <h1>Favorites page</h1>
-        Favorites...
+        {localStorage.login !== true ? 'Please login first to see your favorites...' : null}
       </div>
     );
     

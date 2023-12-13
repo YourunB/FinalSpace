@@ -4,8 +4,6 @@ import './Character.css';
 
 const Character = props => {
 
-  //console.log(props.character)
-
   return (
     <div className='Character'>
       <div className='Character__image'><img src={props.character.img_url} alt='Character'></img></div>

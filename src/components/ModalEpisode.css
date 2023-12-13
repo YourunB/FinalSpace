@@ -104,6 +104,11 @@
   height: 40px;
 }
 
+.ModalEpisode__window_youtube img {
+  height: 60px;
+  transition: 0.5s;
+}
+
 @media (hover:hover) {
   .ModalEpisode button:hover {
     transform: scale(1.1);
@@ -155,5 +160,15 @@
   .ModalEpisode__window:hover {
     background: rgba(255, 255, 255, 0.8);
     color: black;
+  }
+
+  .ModalEpisode__window_youtube img:hover {
+    scale: 1.1;
+    transition: 0.5s;
+  }
+
+  .ModalEpisode__window_youtube img:active {
+    transition: 0.2s;
+    scale: 0.9;
   }
 }

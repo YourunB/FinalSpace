@@ -4,6 +4,7 @@ const initialState={
   maxPage: 0,
   episodesArr: null,
   charactersArr: null,
+  login: false,
 }
 
 export const dataSlice = createSlice({

@@ -1,6 +1,9 @@
 nav {
   height: 20px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .PageLink {
@@ -53,7 +56,135 @@ nav {
   display: flex;
 }
 
+.PagesLinks__btn-user {
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+}
+
+.PagesLinks__login {
+  position: relative;
+}
+
+.PagesLinks__login_menu {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: black;
+  border-radius: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: 0.5s PageLink-show forwards;
+  transition: 0.5s;
+}
+
+.PagesLinks__login_menu li {
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.PageLink-hide {
+  animation: 0.5s PageLink-hide forwards;
+}
+
+.PagesLinks__overlay {
+  position: fixed;
+  z-index: 110;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  opacity: 0.5;
+}
+
+.PagesLinks__modal-login {
+  position: fixed;
+  z-index: 111;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.PagesLinks__modal-login input {
+  margin: 5px;
+  outline: none;
+  border: none;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.PagesLinks__modal-login_controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.PagesLinks__modal-login div span {
+  display: block;
+}
+
+.PagesLinks__modal-login button {
+  background: none;
+  font-weight: 700;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: solid 1px black;
+  transition: 0.5s;
+  min-width: 80px;
+}
+
 @keyframes iridescent  {
   0% {background-position: 0% 50%;}
   100% {background-position: 100% 50%;}
+}
+
+@keyframes PageLink-show {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes PageLink-hide {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@media (hover:hover) {
+  .PagesLinks__btn-user:hover {
+    transition: 0.5s;
+    scale: 1.1;
+    cursor: pointer;
+  }
+
+  .PagesLinks__btn-user:active {
+    transition: 0.2s;
+    scale: 0.9;
+  }
+
+  .PagesLinks__login_menu li:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+  }
+
+  .PagesLinks__modal-login button:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  .PagesLinks__modal-login button:active {
+    transition: 0.2s;
+    transform: scale(0.9);
+  }
 }

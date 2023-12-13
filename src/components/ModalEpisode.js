@@ -92,6 +92,7 @@ const ModalEpisode = props => {
         <p><span>Director: </span>{props.episode.director}</p>
         <p><span>Writer: </span>{props.episode.writer}</p>
         <p><span>Date: </span>{props.episode.air_date}</p>
+        <a className='ModalEpisode__window_youtube' href={`https://www.youtube.com/results?search_query=final+space+${props.episode.name}`} target='_blank'><img src='../images/svg/youtube.svg' alt='Youtube'/></a>
         <p>This episode featured <span>{props.episode.characters.length}</span> character(s)</p>
         {showCharacters === false ? <div className='ModalEpisode__window_controls'><button onClick={(e)=>{loadCharacters(e)}}>Show episode characters</button></div> : null}
         {showCharacters === true ? <div className='ModalEpisode__window_characters'>{characterCode}</div> : null}

@@ -5,7 +5,7 @@ export const PageProfile = () => {
     return (
       <div>
         <h1>Profile page</h1>
-        Profile...
+        {localStorage.login !== true ? 'Please login first to see your profile...' : null}
       </div>
     );
     
