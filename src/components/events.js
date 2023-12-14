@@ -5,5 +5,6 @@ let appEvents=new EventEmitter();
 //EventCheckEpisode - выбран эпизод для подробного отображения
 //EventCloseModalEpisode - закрыть окно
 //EventAddToFavorites - добавить епизод в избранное
+//removeFromFavorites - удаление эпизода
 
 export {appEvents};

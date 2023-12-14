@@ -13,8 +13,18 @@ const Episode = props => {
   }
 
   function addToFavorites(e) {
-    appEvents.emit('EventAddToFavorites', props.episode);
     e.stopPropagation();
+    episodeBlock.current.className = 'Episode Episode-add';
+    appEvents.emit('EventAddToFavorites', props.episode);
+    setTimeout(()=>{episodeBlock.current.className = 'Episode';}, 1000)
+  }
+
+  function removeFromFavorites(e) {
+    e.stopPropagation();
+    episodeBlock.current.className = 'Episode Episode-remove';
+    setTimeout(() => {
+      appEvents.emit('EventRemoveFromFavorites', props.episode);
+    }, 500)
   }
 
   return (
@@ -28,7 +38,8 @@ const Episode = props => {
         <p><span>Director: </span>{props.episode.director}</p>
         <p><span>Writer: </span>{props.episode.writer}</p>
       </div>
-      <button onClick={(e) => {addToFavorites(e);}}>Add to Favorites</button>
+      {props.btnAdd === true ? <button onClick={(e) => {addToFavorites(e);}}>Add to Favorites</button> : null}
+      {props.btnRemove === true ? <button onClick={(e) => {removeFromFavorites(e);}}>Remove</button> : null}
     </div>
   );
 };

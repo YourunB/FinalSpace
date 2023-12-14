@@ -1,0 +1,44 @@
+.PageFavorites {}
+
+.PageFavorites__episodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 800px));
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+
+}
+
+.PageFavorites__wrapper {
+  min-height: calc(100vh - 162px);
+  height: 100%;
+}
+
+.PageFavorites_lock-image {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50vh;
+  width: 100%;
+  animation: PageProfile-lock 2s ease 0s 1 normal forwards;
+}
+
+@media (max-width: 768px) {
+  .PageFavorites__episodes {
+    grid-template-columns: minmax(300px, 600px);
+  }
+}
+
+@keyframes PageFavorites-lock {
+	0%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
+}

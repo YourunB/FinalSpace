@@ -54,6 +54,7 @@
 .PageProfile__info_change_controls {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .PageProfile__info_change_controls button {
@@ -65,6 +66,19 @@
   border-radius: 5px;
   width: 100px;
   transition: 0.5s;
+}
+.PageProfile__wrapper {
+  min-height: calc(100vh - 162px);
+}
+
+.PageProfile_lock-image {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50vh;
+  width: 100%;
+  animation: PageProfile-lock 2s ease 0s 1 normal forwards;
 }
 
 @media (hover:hover) {
@@ -81,4 +95,17 @@
 @keyframes PageProfile-iridescent  {
   0% {background-position: 0% 50%;}
   100% {background-position: 100% 50%;}
+}
+
+@keyframes PageProfile-lock {
+	0%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
 }

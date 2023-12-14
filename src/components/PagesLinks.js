@@ -16,7 +16,7 @@ export const PagesLinks = () => {
   const [logined, setLogined] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openModalLogIn, setOpenModalLogIn] = useState(false);
-  const [openModalSignUp, setOpenModalSignUp] = useState(false);
+  const [openModalReg, setOpenModalReg] = useState(false);
 
   const refLoginMenu = useRef(null);
   const refInputMail = useRef(null);
@@ -46,14 +46,17 @@ export const PagesLinks = () => {
       mail: mail,
       pass: pass,
     };
-  
     const newPostKey = push(child(ref(db), 'posts')).key;
-  
     const updates = {};
     updates['/users/' + newPostKey] = postData;
-  
-    const res = update(ref(db), updates);
-    getDb();
+
+    update(ref(db), updates)
+    .then(() => {
+      getDb();
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    })
   }
 
   function getLinkClass(obj) {
@@ -74,16 +77,16 @@ export const PagesLinks = () => {
   function openModal(what) {
     if (what === 'LogIn') {
       setOpenModalLogIn(true);
-      setOpenModalSignUp(false);
+      setOpenModalReg(false);
     } else {
       setOpenModalLogIn(false);
-      setOpenModalSignUp(true);
+      setOpenModalReg(true);
     }
   }
 
   function closeModal() {
     setOpenModalLogIn(false);
-    setOpenModalSignUp(false);
+    setOpenModalReg(false);
     openLoginMenu();
   }
 
@@ -111,7 +114,7 @@ export const PagesLinks = () => {
     } else alert('Error input');
   }
 
-  function signup() {
+  function register() {
     if (refInputMail.current.validity.valid === true && refInputPass.current.value.length >= 8 && refInputName.current.value.length > 0 && refInputNick.current.value.length > 0 &&  Number(refInputAge.current.value) > 5 && Number(refInputAge.current.value) < 100) {
       let coincidencesMail = false;
       let mail = refInputMail.current.value
@@ -120,10 +123,6 @@ export const PagesLinks = () => {
       if (coincidencesMail === false) {
         addUserDb(refInputName.current.value, refInputNick.current.value, refInputAge.current.value, refInputMail.current.value, refInputPass.current.value);
         closeModal();
-        dispatch(updateLoginState(true));
-        dispatch(updateActiveUser(mail));
-        dispatch(updateUid(uid));
-        setLogined(true);
       } else alert('Such a user exists');
     } else alert('Error input');
   }
@@ -141,13 +140,13 @@ export const PagesLinks = () => {
       <div className='PagesLinks__modal-login'>
         <div className='PagesLinks__modal-login_head-btn'><button onClick={()=>{closeModal();}}>&#10006;</button></div>
         <div><span>Enter email</span><input ref={refInputMail} pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' maxLength={40} required></input></div>
-        {openModalSignUp === true ? <div><span>Enter nick</span><input ref={refInputNick} maxLength={40} required></input></div> : null}
-        {openModalSignUp === true ? <div><span>Enter name</span><input ref={refInputName} minLength={1} maxLength={40} required></input></div> : null}
-        {openModalSignUp === true ? <div><span>Enter age</span><input type={'number'} ref={refInputAge}></input></div> : null}
+        {openModalReg === true ? <div><span>Enter nick</span><input ref={refInputNick} maxLength={40} required></input></div> : null}
+        {openModalReg === true ? <div><span>Enter name</span><input ref={refInputName} minLength={1} maxLength={40} required></input></div> : null}
+        {openModalReg === true ? <div><span>Enter age</span><input type={'number'} ref={refInputAge}></input></div> : null}
         <div><span>Enter password</span><input type={'password'} ref={refInputPass}></input></div>
         <div className='PagesLinks__modal-login_controls'>
           {openModalLogIn === true ? <button onClick={() => {login();}}>LogIn</button> : null}
-          {openModalSignUp === true ? <button onClick={()=>{signup();}}>SignUp</button> : null}
+          {openModalReg === true ? <button onClick={()=>{register();}}>Register</button> : null}
         </div>
       </div>
   </div>
@@ -158,18 +157,18 @@ export const PagesLinks = () => {
         <NavLink to="/" end    className={getLinkClass}>Welcome</NavLink>
         <NavLink to="/episodes" className={getLinkClass}>Episodes</NavLink>
         <NavLink to="/characters" className={getLinkClass}>Characters</NavLink>
-        {logined === true ? <NavLink to="/profile" className={getLinkClass}>Profile</NavLink> : null}
-        {logined === true ? <NavLink to="/favorites" className={getLinkClass}>Favorites</NavLink> : null}
         <NavLink to="/about" className={getLinkClass}>About</NavLink>
+        {logined === true ? <NavLink to="/favorites" className={getLinkClass}>Favorites</NavLink> : null}
+        {logined === true ? <NavLink to="/profile" className={getLinkClass}>Profile</NavLink> : null}
       </div>
       <div className='PagesLinks__login'>
         <img onClick={()=>{openLoginMenu()}} className='PagesLinks__btn-user' src='../images/svg/user.svg' alt='User'/>
         {openLogin === true ? <ul className='PagesLinks__login_menu' ref={refLoginMenu}>
           {dataRedux.login !== true ? <li onClick={()=>{openModal('LogIn')}}>LogIn</li> : null}
-          {dataRedux.login !== true ? <li onClick={()=>{openModal('SignUp')}}>SignUp</li> : null}
+          {dataRedux.login !== true ? <li onClick={()=>{openModal('Register')}}>Register</li> : null}
           {dataRedux.login === true ?<li onClick={() => {logout();}}>LogOut</li> : null}
         </ul> : null}
-        {(openModalLogIn === true || openModalSignUp === true) ? modalWindow : null}
+        {(openModalLogIn === true || openModalReg === true) ? modalWindow : null}
       </div>
     </nav>
   );

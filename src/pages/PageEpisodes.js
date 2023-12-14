@@ -51,9 +51,9 @@ export const PageEpisodes = () => {
   function closeModalEpisode() { setCheckedEpisode(null); }
 
   function addToFavorites(episode) {
-    if (dataRedux.uid !== null) {
+    if (dataRedux.db !== null && dataRedux.uid !== null) {
       update(ref(db, `/users/${dataRedux.uid}/favorites/`), {
-        [episode.id]: episode,
+        [episode.name]: episode,
       })
       .then(() => {
         getDb();
@@ -61,7 +61,6 @@ export const PageEpisodes = () => {
       .catch((error) => {
         console.error("Error: ", error);
       })
-      alert('Add to favorites');
     }
     else alert('Please login first');
   }
@@ -110,6 +109,8 @@ export const PageEpisodes = () => {
       return <Episode
         episode={episode}
         key={el.id}
+        btnRemove={false}
+        btnAdd={dataRedux.uid !== null ? true : false}
       />
     });
   }

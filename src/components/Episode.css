@@ -1,5 +1,6 @@
 ﻿.Episode {
   max-width: 660px;
+  height: 630px;
   width: 100%;
   cursor: pointer;
   opacity: 0;
@@ -47,6 +48,18 @@
   border-radius: 5px;
 }
 
+.Episode-hide {
+  animation: hide 0.5s forwards;
+}
+
+.Episode-add {
+  animation: Episode-add 1s forwards;
+}
+
+.Episode-remove {
+  animation: Episode-remove 1s forwards;
+}
+
 @keyframes iridescent  {
   0% {background-position: 0% 50%;}
   100% {background-position: 100% 50%;}
@@ -63,6 +76,40 @@
   100% {opacity: 1;}
 }
 
+@keyframes hide {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes Episode-add {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    background: rgba(162, 222, 59, 0.9);
+    transform: scale(0.90);
+  }
+  100% {
+    background: rgba(162, 222, 59, 0.9);
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@keyframes Episode-remove {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    background: rgba(222, 59, 59, 0.9);
+    transform: scale(0.90);
+  }
+  100% {
+    background: rgba(222, 59, 59, 0.9);
+    background: rgba(0, 0, 0, 0.9);
+  }
+}
+
+
 @media (hover:hover) {
   .Episode button:hover {
     transform: scale(1.1);
@@ -77,11 +124,6 @@
   .Episode:hover {
     background: rgba(255, 255, 255, 0.8);
     color: black;
-  }
-
-  .Episode:active {
-    transform: scale(0.9);
-    transition: 0.2s;
   }
 
   .Episode:hover .Episode__image img {

@@ -5,6 +5,7 @@ import { updateSaveCharacters } from "../redux/dataSlice.js";
 
 import './PageCharacters.css';
 import Character from '../components/Character';
+import Footer from '../components/Footer.js';
 
 export const PageCharacters = () => {
 
@@ -44,10 +45,13 @@ export const PageCharacters = () => {
           
     return (
       <div className='PageCharacters'>
-        <h1>Characters</h1>
-        <div className='PageCharacters__characters'>
-          {characterCode}
+        <div className='PageCharacters__wrapper'>
+          <h1>Characters</h1>
+          <div className='PageCharacters__characters'>
+            {characterCode}
+          </div>
         </div>
+        <Footer/>
       </div>
     );
     

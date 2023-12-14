@@ -6,6 +6,7 @@ import { getDatabase, child, ref, push, update, onValue  } from "firebase/databa
 import { app } from '../components/firebaseModule';
 
 import './PageProfile.css';
+import Footer from '../components/Footer.js';
 
 export const PageProfile = () => {
   
@@ -91,9 +92,13 @@ export const PageProfile = () => {
           
   return (
     <div className='PageProfile'>
-      <h1>Profile page</h1>
-      {dataRedux.activeUser === null ? 'Please login first to see your profile...' : null}
-      {userInfo}
+      <div className='PageProfile__wrapper'>
+        <h1>User Profile</h1>
+        {dataRedux.activeUser === null ? 'Please login first to see your profile...' : null}
+        {dataRedux.activeUser === null ? <img className='PageProfile_lock-image' src='images/svg/lock.svg' alt='Lock'></img> : null}
+        {userInfo}
+      </div>
+      <Footer/>
     </div>
   );
     
