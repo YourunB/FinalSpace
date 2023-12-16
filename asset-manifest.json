@@ -7,7 +7,7 @@
     "main.fff18514.js.map": "/FinalSpace/static/js/main.fff18514.js.map"
   },
   "entrypoints": [
-    "static/css/main.69f4c9c2.css",
-    "static/js/main.fff18514.js"
+    "/FinalSpace/static/css/main.69f4c9c2.css",
+    "/FinalSpace/static/js/main.fff18514.js"
   ]
 }
