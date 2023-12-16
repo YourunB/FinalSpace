@@ -7,7 +7,7 @@
     "main.cad4dadb.js.map": "/FinalSpace/static/js/main.cad4dadb.js.map"
   },
   "entrypoints": [
-    "/FinalSpacestatic/css/main.c8791de5.css",
-    "/FinalSpacestatic/js/main.cad4dadb.js"
+    "/FinalSpace/static/css/main.c8791de5.css",
+    "/FinalSpace/static/js/main.cad4dadb.js"
   ]
 }
