@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/FinalSpace/static/css/main.c8791de5.css",
-    "main.js": "/FinalSpace/static/js/main.cad4dadb.js",
-    "index.html": "/FinalSpace/index.html",
-    "main.c8791de5.css.map": "/FinalSpace/static/css/main.c8791de5.css.map",
-    "main.cad4dadb.js.map": "/FinalSpace/static/js/main.cad4dadb.js.map"
+    "main.css": "static/css/main.c8791de5.css",
+    "main.js": "static/js/main.fff18514.js",
+    "index.html": "index.html",
+    "main.c8791de5.css.map": "static/css/main.c8791de5.css.map",
+    "main.fff18514.js.map": "static/js/main.fff18514.js.map"
   },
   "entrypoints": [
-    "https://yourunb.github.io/FinalSpace/static/css/main.c8791de5.css",
-    "https://yourunb.github.io/FinalSpace/static/js/main.cad4dadb.js"
+    "static/css/main.c8791de5.css",
+    "static/js/main.fff18514.js"
   ]
 }
