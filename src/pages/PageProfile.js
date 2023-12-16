@@ -95,7 +95,7 @@ export const PageProfile = () => {
       <div className='PageProfile__wrapper'>
         <h1>User Profile</h1>
         {dataRedux.activeUser === null ? 'Please login first to see your profile...' : null}
-        {dataRedux.activeUser === null ? <img className='PageProfile_lock-image' src='images/svg/lock.svg' alt='Lock'></img> : null}
+        {dataRedux.activeUser === null ? <img className='PageProfile_lock-image' src='./images/svg/lock.svg' alt='Lock'></img> : null}
         {userInfo}
       </div>
       <Footer/>

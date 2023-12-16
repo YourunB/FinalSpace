@@ -30,7 +30,7 @@ const Episode = props => {
   return (
     <div className='Episode' ref={episodeBlock} onClick={()=>{checkEpisode()}}>
       <div className='Episode__image'>
-        <img src={props.episode.img_url}/>
+        <img src={props.episode.img_url} alt='Episode'/>
       </div>
       <div className='Episode__content'>
         <p><span>Episode: </span>{props.episode.name}</p>

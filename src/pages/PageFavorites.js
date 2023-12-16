@@ -80,7 +80,7 @@ export const PageFavorites = () => {
       <div className='PageFavorites__wrapper'>
         <h1>Favorites Episodes</h1>
         {dataRedux.activeUser === null ? 'Please login first to see your favorites...' : null}
-        {dataRedux.activeUser === null ? <img className='PageFavorites_lock-image' src='images/svg/lock.svg' alt='Lock'></img> : null}
+        {dataRedux.activeUser === null ? <img className='PageFavorites_lock-image' src='./images/svg/lock.svg' alt='Lock'></img> : null}
         <div className='PageFavorites__episodes'>
           {episodeCode}
         </div>

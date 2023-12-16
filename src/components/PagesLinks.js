@@ -162,7 +162,7 @@ export const PagesLinks = () => {
         {logined === true ? <NavLink to="/profile" className={getLinkClass}>Profile</NavLink> : null}
       </div>
       <div className='PagesLinks__login'>
-        <img onClick={()=>{openLoginMenu()}} className='PagesLinks__btn-user' src='../images/svg/user.svg' alt='User'/>
+        <img onClick={()=>{openLoginMenu()}} className='PagesLinks__btn-user' src='./images/svg/user.svg' alt='User'/>
         {openLogin === true ? <ul className='PagesLinks__login_menu' ref={refLoginMenu}>
           {dataRedux.login !== true ? <li onClick={()=>{openModal('LogIn')}}>LogIn</li> : null}
           {dataRedux.login !== true ? <li onClick={()=>{openModal('Register')}}>Register</li> : null}
