@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FinalSpace/static/css/main.69f4c9c2.css",
+    "main.js": "/FinalSpace/static/js/main.fff18514.js",
+    "index.html": "/FinalSpace/index.html",
+    "main.69f4c9c2.css.map": "/FinalSpace/static/css/main.69f4c9c2.css.map",
+    "main.fff18514.js.map": "/FinalSpace/static/js/main.fff18514.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69f4c9c2.css",
+    "static/js/main.fff18514.js"
+  ]
+}
