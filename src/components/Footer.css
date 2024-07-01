@@ -1,0 +1,47 @@
+﻿
+.Footer {
+  border-top: solid 1px white;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  animation: Footer-show 0.5s forwards;
+}
+
+.Footer__author {
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.Footer__list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 10px;
+}
+
+.Footer__list_item img{
+  width: 40px;
+  height: 40px;
+  filter: invert(1);
+}
+
+@keyframes Footer-show {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@media (max-width: 576px) {
+  .Footer {
+    justify-content: center;
+  }
+
+  .Footer__list_item img{
+    width: 40px;
+    height: 40px;
+  }
+}

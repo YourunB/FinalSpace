@@ -1,0 +1,62 @@
+.PageWelcome {
+  min-height: calc(100vh - 80px);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PageWelcome img{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transform: scale(0);
+  opacity: 0;
+  animation: show-scale 1s forwards;
+}
+
+.PageWelcome p {
+  text-align: center;
+  transform: translateX(-200%);
+  opacity: 0;
+  animation-delay: 1s;
+  font-size: 14px;
+  animation: slide 1s forwards;
+}
+
+.PageWelcome p span{
+  transition: 1s;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: iridescent 5s ease-in-out infinite alternate;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes show-scale {
+  0% {
+    transform: scale(0);
+    opacity: 0;}
+  100% {
+    transform: scale(1);
+    opacity: 1;}
+}
+
+@keyframes iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}

@@ -1,0 +1,12 @@
+.PageCharacters {}
+
+.PageCharacters__characters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.PageCharacters__wrapper {
+  min-height: calc(100vh - 162px);
+}

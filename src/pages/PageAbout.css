@@ -1,0 +1,36 @@
+.PageAbout {
+
+}
+
+.PageAbout__wrapper {
+  min-height: calc(100vh - 162px);
+  height: 100%;
+}
+
+.PageAbout__image-box {
+  display: flex;
+  justify-content: center;
+}
+
+.PageAbout__image-box_image {
+  max-width: 100%;
+}
+
+.PageAbout h3 {
+  text-align: center;
+}
+
+.PageAbout__link {
+  transition: 1s;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: PageAbout-iridescent  5s ease-in-out infinite alternate;
+}
+
+@keyframes PageAbout-iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}

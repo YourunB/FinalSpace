@@ -1,0 +1,224 @@
+nav {
+  height: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PageLink {
+  color: white;
+  margin-right: 10px;
+  position: relative;
+  transition: 1s;
+}
+  
+.PageLink::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-bottom: 1px solid #0190cd;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0;
+  bottom: -2px;
+  transition: 1s;
+  display: flex;
+}
+
+.PageLink:hover::after {
+  width: 100%;
+  transition: 1s;
+}
+
+.ActivePageLink {
+  transition: 1s;
+  background: linear-gradient(to right,#ba7dff 20%, #00affa 30%, #0190cd 70%, #cc66ff 80%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 500% auto;
+  animation: iridescent 5s ease-in-out infinite alternate;
+}
+
+.ActivePageLink::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-bottom: 1px solid #0190cd;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  bottom: -2px;
+  transition: 1s;
+  display: flex;
+}
+
+.PagesLinks__btn-user {
+  width: 40px;
+  height: 40px;
+  transition: 0.5s;
+}
+
+.PagesLinks__login {
+  position: relative;
+}
+
+.PagesLinks__login_menu {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: black;
+  border-radius: 10px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: 0.5s PageLink-show forwards;
+  transition: 0.5s;
+}
+
+.PagesLinks__login_menu li {
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.PageLink-hide {
+  animation: 0.5s PageLink-hide forwards;
+}
+
+.PagesLinks__overlay {
+  position: fixed;
+  z-index: 110;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  opacity: 0;
+  animation: 0.5s PagesLinks__show-overlay forwards;
+}
+
+.PagesLinks__modal-login {
+  position: fixed;
+  z-index: 111;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  opacity: 0;
+  animation: PageLink-show 0.5s forwards;
+}
+
+.PagesLinks__modal-login input {
+  margin: 5px;
+  outline: none;
+  border: none;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.PagesLinks__modal-login_controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.PagesLinks__modal-login div span {
+  display: block;
+}
+
+.PagesLinks__modal-login_controls button {
+  background: none;
+  font-weight: 700;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: solid 1px black;
+  transition: 0.5s;
+  min-width: 80px;
+}
+
+.PagesLinks__modal-login_head-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.PagesLinks__modal-login_head-btn button {
+  outline: none;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: solid 1px black;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+@keyframes iridescent  {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+@keyframes PageLink-show {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes PagesLinks__show-overlay {
+  0% {opacity: 0;}
+  100% {opacity: 0.5;}
+}
+
+@keyframes PageLink-hide {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@media (hover:hover) {
+  .PagesLinks__btn-user:hover {
+    transition: 0.5s;
+    scale: 1.1;
+    cursor: pointer;
+  }
+
+  .PagesLinks__btn-user:active {
+    transition: 0.2s;
+    scale: 0.9;
+  }
+
+  .PagesLinks__login_menu li:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+  }
+
+  .PagesLinks__modal-login_controls button:hover {
+    transition: 0.5s;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  .PagesLinks__modal-login_controls button:active {
+    transition: 0.2s;
+    transform: scale(0.9);
+  }
+
+  .PagesLinks__modal-login_head-btn button:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    transform: scale(1.1);
+  }
+
+  .PagesLinks__modal-login_head-btn button:active {
+    transition: 0.2s;
+    transform: scale(0.9);
+  }
+}
